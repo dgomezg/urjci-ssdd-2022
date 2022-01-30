@@ -1,6 +1,6 @@
 package dev.dgomezg.urjci.ssdd.sockets.samples;
 
-import java.io.IOException;
+import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
 
@@ -17,7 +17,20 @@ public class DummyServer {
             try (Socket serviceSocket = serverSocket.accept()) {
                 System.out.println("Service Socket for request open on port "
                         + serviceSocket.getPort());
+                processRequest(serviceSocket);
             } // serviceSocket (Autocloseable) is properly closed by try-with-resources
         } // serverSocket (Autocloseable) is properly closed by try-with-resources
+    }
+
+    private static void processRequest(Socket serviceSocket) throws IOException {
+        try (
+                InputStream inputStream = serviceSocket.getInputStream();
+                BufferedReader reader =
+                    new BufferedReader(new InputStreamReader(inputStream)) ) {
+            String line = null;
+            while (!(line = reader.readLine()).equalsIgnoreCase("bye")) {
+                System.out.println("> " + line);
+            }
+        } //inputStream & BufferedReader (autocloseable) implicitly closed
     }
 }
