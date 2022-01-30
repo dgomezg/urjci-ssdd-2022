@@ -7,6 +7,7 @@ import java.net.Socket;
 public class DummyServer {
 
     public static final int PORT = 8080;
+    public static final String EOT_COMMAND = "bye";
 
     public static void main(String[] args) throws IOException {
 
@@ -28,7 +29,7 @@ public class DummyServer {
                 BufferedReader reader =
                     new BufferedReader(new InputStreamReader(inputStream)) ) {
             String line = null;
-            while (!(line = reader.readLine()).equalsIgnoreCase("bye")) {
+            while (!(line = reader.readLine()).equalsIgnoreCase(EOT_COMMAND)) {
                 System.out.println("> " + line);
             }
         } //inputStream & BufferedReader (autocloseable) implicitly closed
