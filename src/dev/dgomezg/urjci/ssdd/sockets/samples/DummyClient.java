@@ -26,8 +26,9 @@ public class DummyClient {
         try (   OutputStream outputStream = socket.getOutputStream();
                 PrintWriter writer = new PrintWriter(outputStream)) {
 
+            //Java8 Streams are different things to Input/outputStreams!
             Stream.of("UNO", "DOS", "CUATRO", "CATORCE", DummyServer.EOT_COMMAND)
-                    .forEach(s -> writer.println());
+                    .forEach(writer::println);
 
         } //OutputStream & Writer (autocloseable) implicitly closed.
     }
