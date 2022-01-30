@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.net.Socket;
+import java.util.stream.Stream;
 
 public class DummyClient {
 
@@ -25,11 +26,8 @@ public class DummyClient {
         try (   OutputStream outputStream = socket.getOutputStream();
                 PrintWriter writer = new PrintWriter(outputStream)) {
 
-            writer.println("UNO");
-            writer.println("DOS");
-            writer.println("CUATRO");
-            writer.println("CATORCE");
-            writer.println(DummyServer.EOT_COMMAND);
+            Stream.of("UNO", "DOS", "CUATRO", "CATORCE", DummyServer.EOT_COMMAND)
+                    .forEach(s -> writer.println());
 
         } //OutputStream & Writer (autocloseable) implicitly closed.
     }
