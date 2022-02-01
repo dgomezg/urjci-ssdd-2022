@@ -21,22 +21,17 @@ public class ConcurrentEchoServer {
                     public void run() {
                         /* try must be moved to the thread,
                          * with the try-with-resources outside of the thread
-                         * the socket would be closed externally and not acessible
+                         * the socket would be closed externally and not accessible
                          * by the thread.
                          */
-                        try {
-                            processRequest(serviceSocket);
+                        // try-with-resources can
+                        try(Socket srvSocket = serviceSocket) {
+                            processRequest(srvSocket);
                         } catch (IOException e) {
                             System.out.println("Error processing request from "
                                     + serviceSocket.getPort()
                                     + ". Exception: "
                                     + e.getMessage());
-                        } finally {
-                            try {
-                                serviceSocket.close();
-                            } catch (IOException e) {
-                                e.printStackTrace();
-                            }
                         }
                     }
                 });
@@ -56,7 +51,9 @@ public class ConcurrentEchoServer {
             String line = null;
             while ( (line = socketReader.readLine()) != null
                     && !line.equals(EOT_COMMAND)) {
-                System.out.println("< " + line);
+                System.out.printf("[%s]< %s\n",
+                        Thread.currentThread().getName(),
+                        line);
                 socketWriter.println("> " + line);
             }
 
