@@ -24,9 +24,10 @@ public class ConcurrentEchoServer {
                          * the socket would be closed externally and not accessible
                          * by the thread.
                          */
-                        // try-with-resources can
-                        try(Socket srvSocket = serviceSocket) {
-                            processRequest(srvSocket);
+                        // try-with-resources can be used with existing resources
+                        //Since Java 9, resource can be simply reused
+                        try(serviceSocket) {
+                            processRequest(serviceSocket);
                         } catch (IOException e) {
                             System.out.println("Error processing request from "
                                     + serviceSocket.getPort()
