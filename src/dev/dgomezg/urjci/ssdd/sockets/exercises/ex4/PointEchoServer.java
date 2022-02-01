@@ -29,6 +29,9 @@ public class PointEchoServer {
             //TODO: Receive a Point3d from the client
             Point3d point = (Point3d) socketReader.readObject();
             //TODO: Send the Point3d back to the client
+            System.out.printf("[%s] Received point %s\n",
+                    Thread.currentThread().getName(),
+                    point.toString());
             //TODO: Print the received point.
         } catch (Exception ex) {
             System.out.printf("[%s] Error handling request. Cause %s\n",

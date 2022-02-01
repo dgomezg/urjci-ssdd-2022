@@ -22,7 +22,7 @@ public class PointEchoClient {
              ObjectOutputStream objectOutputStream =
                      new ObjectOutputStream(socket.getOutputStream())
         ) {
-            //TODO Serialize and Send Point to Server
+            //TODO Serialiqze and Send Point to Server
             Point3d point = new Point3d(1,2, 3);
             objectOutputStream.writeObject(point);
             objectOutputStream.flush();
