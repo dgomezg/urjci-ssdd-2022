@@ -1,9 +1,6 @@
 package dev.dgomezg.urjci.ssdd.sockets.exercises.ex4;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.PrintWriter;
+import java.io.*;
 import java.net.Socket;
 
 public class PointEchoClient {
@@ -19,9 +16,18 @@ public class PointEchoClient {
         } //Socket (Autocloseable) closed implicitly
     }
 
-    private static void sendToServerAndAwaitResponse(Socket socket) {
-        //TODO Serialize and Send Point to Server
-        //TODO Read response, deserialize Point and print.
+    private static void sendToServerAndAwaitResponse(Socket socket)
+            throws IOException {
+        try (socket;
+             ObjectOutputStream objectOutputStream =
+                     new ObjectOutputStream(socket.getOutputStream())
+        ) {
+            //TODO Serialize and Send Point to Server
+            Point3d point = new Point3d(1,2, 3);
+            objectOutputStream.writeObject(point);
+            objectOutputStream.flush();
+            //TODO Read response, deserialize Point and print.
+        }
     }
 
 
