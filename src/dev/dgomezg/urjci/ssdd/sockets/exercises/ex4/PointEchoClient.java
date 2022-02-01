@@ -20,13 +20,20 @@ public class PointEchoClient {
             throws IOException {
         try (socket;
              ObjectOutputStream objectOutputStream =
-                     new ObjectOutputStream(socket.getOutputStream())
+                     new ObjectOutputStream(socket.getOutputStream());
+             ObjectInputStream objectInputStream =
+                     new ObjectInputStream(socket.getInputStream());
         ) {
             //TODO Serialize and Send Point to Server
             Point3d point = new Point3d(1,2, 3);
             objectOutputStream.writeObject(point);
             objectOutputStream.flush();
             //TODO Read response, deserialize Point and print.
+            Point3d response = (Point3d) objectInputStream.readObject();
+            System.out.println("> " + response.toString());
+        } catch (ClassNotFoundException e) {
+            System.out.println("Error reading response from server "
+                    + e.getMessage());
         }
     }
 
