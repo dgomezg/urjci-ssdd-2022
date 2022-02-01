@@ -13,10 +13,24 @@ public class ConcurrentEchoServer {
         try (ServerSocket serverSocket = new ServerSocket(PORT)) {
             System.out.println("Server Listening on " + serverSocket.getLocalSocketAddress());
 
-            //TODO: Attend each request in a different Thread.
-            try (Socket serviceSocket = serverSocket.accept()) {
-                System.out.println("Accepted connection on port " + serviceSocket.getPort());
-                processRequest(serviceSocket);
+            while(true) {
+                try (Socket serviceSocket = serverSocket.accept()) {
+                    System.out.println("Accepted connection on port " + serviceSocket.getPort());
+                    Thread workerThread = new Thread(new Runnable() {
+                        @Override
+                        public void run() {
+                            try {
+                                processRequest(serviceSocket);
+                            } catch (IOException e) {
+                                System.out.println("Error processing request from "
+                                        + serviceSocket.getPort()
+                                        + ". Exception: "
+                                        + e.getMessage());
+                            }
+                        }
+                    });
+                    workerThread.start();
+                }
             }
         }
     }
