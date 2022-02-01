@@ -16,24 +16,21 @@ public class ConcurrentEchoServer {
             while(true) {
                 Socket serviceSocket = serverSocket.accept();
                 System.out.println("Accepted connection on port " + serviceSocket.getPort());
-                Thread workerThread = new Thread(new Runnable() {
-                    @Override
-                    public void run() {
-                        /* try must be moved to the thread,
-                         * with the try-with-resources outside of the thread
-                         * the socket would be closed externally and not accessible
-                         * by the thread.
-                         */
-                        // try-with-resources can be used with existing resources
-                        //Since Java 9, resource can be simply reused
-                        try(serviceSocket) {
-                            processRequest(serviceSocket);
-                        } catch (IOException e) {
-                            System.out.println("Error processing request from "
-                                    + serviceSocket.getPort()
-                                    + ". Exception: "
-                                    + e.getMessage());
-                        }
+                Thread workerThread = new Thread( () -> {
+                    /* try must be moved to the thread,
+                     * with the try-with-resources outside of the thread
+                     * the socket would be closed externally and not accessible
+                     * by the thread.
+                     */
+                    // try-with-resources can be used with existing resources
+                    //Since Java 9, resource can be simply reused
+                    try(serviceSocket) {
+                        processRequest(serviceSocket);
+                    } catch (IOException e) {
+                        System.out.println("Error processing request from "
+                                + serviceSocket.getPort()
+                                + ". Exception: "
+                                + e.getMessage());
                     }
                 });
                 workerThread.start();
