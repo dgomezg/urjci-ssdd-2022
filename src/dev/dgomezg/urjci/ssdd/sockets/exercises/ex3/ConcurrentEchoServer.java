@@ -14,23 +14,34 @@ public class ConcurrentEchoServer {
             System.out.println("Server Listening on " + serverSocket.getLocalSocketAddress());
 
             while(true) {
-                try (Socket serviceSocket = serverSocket.accept()) {
-                    System.out.println("Accepted connection on port " + serviceSocket.getPort());
-                    Thread workerThread = new Thread(new Runnable() {
-                        @Override
-                        public void run() {
+                Socket serviceSocket = serverSocket.accept();
+                System.out.println("Accepted connection on port " + serviceSocket.getPort());
+                Thread workerThread = new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        /* try must be moved to the thread,
+                         * with the try-with-resources outside of the thread
+                         * the socket would be closed externally and not acessible
+                         * by the thread.
+                         */
+                        try {
+                            processRequest(serviceSocket);
+                        } catch (IOException e) {
+                            System.out.println("Error processing request from "
+                                    + serviceSocket.getPort()
+                                    + ". Exception: "
+                                    + e.getMessage());
+                        } finally {
                             try {
-                                processRequest(serviceSocket);
+                                serviceSocket.close();
                             } catch (IOException e) {
-                                System.out.println("Error processing request from "
-                                        + serviceSocket.getPort()
-                                        + ". Exception: "
-                                        + e.getMessage());
+                                e.printStackTrace();
                             }
                         }
-                    });
-                    workerThread.start();
-                }
+                    }
+                });
+                workerThread.start();
+
             }
         }
     }
