@@ -16,8 +16,8 @@ public class ConcurrentEchoServer {
             while(true) {
                 Socket serviceSocket = serverSocket.accept();
                 System.out.println("Accepted connection on port " + serviceSocket.getPort());
-                Thread workerThread = new Thread( () -> processRequest(serviceSocket) );
-                workerThread.start();
+                new Thread( () -> processRequest(serviceSocket) )
+                        .start();
             }
         }
     }
