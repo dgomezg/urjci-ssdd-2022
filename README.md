@@ -91,3 +91,4 @@ A partir de ese momento, habremos creado una nueva rama partiendo del `commit` e
 | ---- | ------------------- |
 | `main` | Rama principal donde se encuentran todos los ejemplos y ejercicios resueltos 
 | `socket-samples` | Rama con ejemplos de creación de Socket Servidor y socket cliente |
+| `serialization-ex4` | Ejercicio de Servidor y Cliente Eco que intercambian un mensaje serializado de Point3d |
