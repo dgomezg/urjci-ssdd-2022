@@ -94,3 +94,4 @@ A partir de ese momento, habremos creado una nueva rama partiendo del `commit` e
 | `sockets-ex1` | Ejercicio de creación de un cliente de Echo que envia a un servidor lo recibido por la entrada estándar y espera la respuesta del servidor |
 | `sockets-ex2` | Ejercicio de Servidor de Echo que devuelve al cliente lo que recibe del mismo. |
 | `sockets-ex3` | Servidor EchoServer concurrente para admitir más de una conexión de cliente. |
+| `serialization-ex4` | Ejercicio de Servidor y Cliente Eco que intercambian un mensaje serializado de Point3d |
