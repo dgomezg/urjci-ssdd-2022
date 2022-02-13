@@ -89,4 +89,5 @@ A partir de ese momento, habremos creado una nueva rama partiendo del `commit` e
 
 | rama | ejercicio / ejemplo |
 | ---- | ------------------- |
-| `main` | Rama principal donde se encuentran todos los ejemplos y ejercicios resueltos
+| `main` | Rama principal donde se encuentran todos los ejemplos y ejercicios resueltos 
+| `socket-samples` | Rama con ejemplos de creación de Socket Servidor y socket cliente |
