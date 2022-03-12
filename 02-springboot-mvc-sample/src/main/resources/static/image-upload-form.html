@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Form to upload an image.</title>
+</head>
+<body>
+
+<h1>Form to upload an image.</h1>
+
+<form method="POST" action="/upload-image" enctype="multipart/form-data">
+    <label for="imageName">Image name</label>
+    <input type="text" id="imageName" name="imageName"/>
+
+    <label for="imageFile">Nombre de Usuario (almacenado usando @SessionScope):</label>
+    <input type="file" id="imageFile" name="imageFile" accept=".jpeg,.jpg,.png"/>
+
+    <input type="submit" value="Enviar"/>
+
+</form>
+
+
+</body>
+</html>
