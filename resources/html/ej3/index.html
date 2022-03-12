@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <!--TODO: Add links to bootstrap -->
+    <title>Ejercicio maquetación HTML Sistemas Distribuidos</title>
+    <meta charset="UTF-8">
+</head>
+<body id="contenido_principal">
+    <div id="Encabezado">
+        <header>
+            <h1>Mi página personal del curso 2022</h1>
+        </header>
+        <nav>
+            <ul>
+                <li>
+                    <a href="https://www.aulavirtual.urjc.es/moodle/">Aula Virtual</a>
+                </li>
+            </ul>
+            <ul>
+                <li>
+                    <a href="https://myapps.urjc.es/myapps">MyApps</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+
+    <main>
+        <section id="contenido_seccion">
+            <article class="articulo">
+                <h2>Sistemas Distribuidos - Notas Maquetación HTML</h2>
+                <p>Bootstrap is the most popular HTML, CSS, and JS framework for developing responsive, mobile-first projects on the web./p>
+                <p>Is important to use HTML tags according to their semantics and not based on their appearance.</p>
+                <p></p>
+            </article>
+            <article class="articulo">
+                <h2>Listado de asignaturas</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Asignatura</th>
+                            <th>Profesor</th>
+                            <th>horas semanales</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Sistemas Distribuidos</td>
+                            <td>David Gómez G.</td>
+                            <td>4</td>
+                        </tr>
+                        <tr>
+                            <td>Sistemas Empotrados y de Tiempo Real</td>
+                            <td>John Doe</td>
+                            <td>4</td>
+                        </tr>
+                        <tr>
+                            <td>Inteligencia Artificial</td>
+                            <td>Helen Scott</td>
+                            <td>4</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </article>
+
+            <article class="articulo">
+                <h2>Formulario Notas</h2>
+                <form class="formulario" action="/notes" method="post">
+                    <label for="subject">Asignatura:</label><br>
+                    <input type="text" id="subject" name="subject"><br>
+                    <label for="notes">Notas</label><br>
+                    <textarea id="notes" name="notes"></textarea>
+                    <input type="submit">
+                  </form>
+             </article>
+        </section>
+        <aside>
+            <h2>Secciones favoritas</h2>
+            <ol>
+                <li>Tareas pendientes</li>
+                <li>Correo URJC</li>
+                <li>Biblioteca</li>
+                <li>Deportes</li>
+             </ol>
+        </aside>
+    </main>
+
+    <!-- TODO: Set an empty div container with class clearfix to allow css configuration-->
+    <footer>
+        <span>David Gómez G.</span>
+        <ul>
+            <li>
+                <a href="https://twitter.com/dgomezg">
+                    <img src="https://about.twitter.com/content/dam/about-twitter/en/brand-toolkit/brand-download-img-1.jpg.twimg.1920.jpg" alt="twitter logo"/>
+                    <span>@dgomezg</span>
+                </a>
+            </li>
+            <li>
+                <a href="mailto:david.gomezg@urjc.es">
+                    <img src="https://media.istockphoto.com/vectors/email-icon-simple-vector-illustration-red-color-vector-id826567080?b=1&k=20&m=826567080&s=612x612&w=0&h=HJ15iwgDNi9GigFFQFaHV80GHQH_2UU8JGgFkQPLuyU=" alt="email icon"/>
+                    <span>david.gomezg@urjc.es</span>
+                </a>
+
+
+            </li>
+        </ul>
+    </footer>
+</body>
+
+</html>
