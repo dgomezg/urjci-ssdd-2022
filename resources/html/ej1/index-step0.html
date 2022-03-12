@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Mi página personal</title>
+</head>
+<body>
+    <!--TODO: Add a container with a header and a nav-->
+    <div id="header">
+        <header>
+            <h1>Mi página personal</h1>
+        </header>
+        <nav>
+            <ul>
+                <li><a href="https://intranet.urjc.es">Intranet URCJ</a></li>
+                <li><a href="https://www.aulavirtual.urjc.es/moodle/">Aula Virtual</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <!--TODO: Add a main container with three sections:
+          - A Section with a table containing some subjects you are attending
+          - A Section with some notes you took at one or more classes you attended
+          - A section with a form (to add a subject to the table or notes from a class)
+    -->
+    <main>
+        <Section class="articulo">
+            <h2>Sistemas Distribuidos - Notas Maquetación HTML</h2>
+            <p>Bootstrap is the most popular HTML, CSS, and JS framework for developing responsive, mobile-first projects on the web./p>
+            <p>Is important to use HTML tags according to their semantics and not based on their appearance.</p>
+            <p></p>
+        </Section>
+        <Section class="articulo">
+            <h2>Listado de asignaturas</h2>
+            <table>
+                <thead>
+                <tr>
+                    <th>Asignatura</th>
+                    <th>Profesor</th>
+                    <th>horas semanales</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>Sistemas Distribuidos</td>
+                    <td>David Gómez G.</td>
+                    <td>4</td>
+                </tr>
+                <tr>
+                    <td>Sistemas Empotrados y de Tiempo Real</td>
+                    <td>John Doe</td>
+                    <td>4</td>
+                </tr>
+                <tr>
+                    <td>Inteligencia Artificial</td>
+                    <td>Helen Scott</td>
+                    <td>4</td>
+                </tr>
+                </tbody>
+            </table>
+        </Section>
+        <section class="articulo">
+            <h2>Formulario Notas</h2>
+            <form class="formulario" action="/notes" method="post">
+                <label for="subject">Asignatura:</label><br>
+                <input type="text" id="subject" name="subject"><br>
+                <label for="notes">Notas</label><br>
+                <textarea id="notes" name="notes"></textarea>
+                <input type="submit">
+            </form>
+        </section>
+    </main>
+
+    <!--
+      TODO: Create a side section with some links to useful resources
+           (Links to class resources, ...)
+     -->
+        <aside>
+            <h2>Secciones favoritas</h2>
+            <ol>
+                <li>Tareas pendientes</li>
+                <li>Correo URJC</li>
+                <li>Biblioteca</li>
+                <li>Deportes</li>
+            </ol>
+        </aside>
+
+    <!-- TODO: Create a footer with your name and license (or links to your personal URls) -->
+    <div id="footer">
+        <span>David Gómez Feb, 2022</span>
+    </div>
+</body>
+</html>
