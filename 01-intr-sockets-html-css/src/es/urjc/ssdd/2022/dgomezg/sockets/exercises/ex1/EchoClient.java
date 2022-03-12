@@ -1,4 +1,4 @@
-package dev.dgomezg.urjci.ssdd.sockets.exercises.ex1;
+package sockets.exercises.ex1;
 
 import java.io.BufferedReader;
 import java.io.IOException;

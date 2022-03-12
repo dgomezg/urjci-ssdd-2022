@@ -1,4 +1,4 @@
-package dev.dgomezg.urjci.ssdd.sockets.exercises.ex2;
+package sockets.exercises.ex2;
 
 import java.io.*;
 import java.net.ServerSocket;

@@ -1,4 +1,4 @@
-package dev.dgomezg.urjci.ssdd.sockets.samples;
+package sockets.samples;
 
 import java.io.*;
 import java.net.ServerSocket;
