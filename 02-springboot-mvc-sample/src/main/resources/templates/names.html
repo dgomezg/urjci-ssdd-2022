@@ -1,0 +1,29 @@
+<html>
+<body>
+
+	<p>People in the group</p>
+	<ul>
+		{{#names}}
+		<li>{{.}}</li>
+		{{/names}}
+	</ul>
+	
+	<p>Table:</p>
+	<table>
+		<theader>
+		<tr>
+			<td>Order</td>
+			<td>Name</td>
+		</tr>
+		</theader>
+		<tbody>
+		{{#names}}
+		<tr>
+			<td>{{-index}}</td>
+			<td>{{.}}</td>
+		</tr>
+		{{/names}}
+		</tbody>
+	</table>
+</body>
+</html>
