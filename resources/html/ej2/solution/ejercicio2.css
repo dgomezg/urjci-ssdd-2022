@@ -1,0 +1,128 @@
+/* Step 0 --> Reset: set Margin and padding to 0 */
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
+
+/* Step 1 --> light background and default font*/
+
+body
+{
+    background: lightgray;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+
+/* step 2 --> With, margin and border for main content */
+
+#contenido_principal
+{
+    width: 100%;
+    margin: 0 auto;
+    border: 1px solid black;
+}
+
+/* Step 3 --> Header text centered (and some format and color   */
+
+
+header{
+    background: red;
+    width:100%;
+    height: 80px;
+    text-align: center;
+    line-height: 80px;
+    color: white;
+    border-bottom: 3px dashed black;
+}
+
+/* Step 4 --> Top Navitagion menu. background, height and border */
+
+nav{
+    background: lightblue;
+    height: 50px;
+    border: 1px solid black;
+}
+
+/* Step 5 --> Elements in top Navigation Menu superior. Float elements to left, remove list bullet decorations */
+
+nav > ul > li{
+    float: left;
+    list-style: none;
+    margin: 10px;
+    line-height: 30px;
+}
+
+/* Step 6 --> Set section content to have at 80% width and a min height of 350 px*/
+
+#contenido_seccion
+{
+    float: left;
+    width: 80%;
+    background: green;
+    min-height: 350px;
+}
+
+/* Step 7 --> Set aside box to expand up to 20% of the total width with the same height as the sections. */
+
+aside{
+    float:left;
+    width: 20%;
+    background: orange;
+    min-height: 350px;
+}
+
+aside > ol > li {
+    margin-left: 25px
+}
+
+/* Step 8 --> custom styles for the articles */
+
+.articulo{
+    color: white;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    border-bottom: 1px solid white;
+    padding-bottom: 10px;
+}
+
+.articulo:first-child
+{
+    color: red;
+}
+
+/* Step 9 --> some space between header main sections and footer */
+
+.clearfix {
+    clear: both;
+}
+
+/* Step 10 -->  Styles for the footer */
+
+footer{
+    background: black;
+    height: 50px;
+    color: white;
+    text-align: center;
+    line-height: 50px;
+}
+
+footer ul {
+    display:block;
+}
+
+footer li {
+    display: block;
+    float:left;
+    margin: 0 50px;
+}
+
+footer .author {
+    float: right;
+}
+
+.social_media_links img {
+    width:25px;
+}
+
