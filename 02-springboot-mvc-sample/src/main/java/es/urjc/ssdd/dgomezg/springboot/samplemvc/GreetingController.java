@@ -17,4 +17,21 @@ public class GreetingController {
         model.addAttribute("name", "David");
         return "greeting_template";
     }
+
+    @GetMapping("/hello")
+    public String hello(Model model) {
+        model.addAttribute("name", "David");
+        model.addAttribute("hello", true);
+
+        return "basic_template";
+    }
+
+    @GetMapping("/bye")
+    public String farewell(Model model) {
+        model.addAttribute("name", "David");
+        model.addAttribute("hello", false);
+
+        return "basic_template";
+    }
+
 }
