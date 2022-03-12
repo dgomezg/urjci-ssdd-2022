@@ -6,6 +6,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import java.util.Arrays;
+import java.util.List;
+
 @Controller
 public class GreetingController {
 
@@ -16,6 +19,14 @@ public class GreetingController {
         LOGGER.debug("Invoking Greeting controller");
         model.addAttribute("name", "David");
         return "greeting_template";
+    }
+
+    @GetMapping("/list")
+    public String list(Model model) {
+        List<String> strings = Arrays.asList("Karem", "John", "Katty", "Fred");
+        model.addAttribute("names", strings);
+
+        return "names";
     }
 
     @GetMapping("/hello")
