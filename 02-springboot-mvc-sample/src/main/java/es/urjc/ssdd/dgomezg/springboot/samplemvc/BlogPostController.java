@@ -10,7 +10,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -31,8 +33,14 @@ public class BlogPostController {
         return "blog/index";
     }
 
-    //TODO 4: Create a new controller method to return the post lists ordered by one of the new methods
+    //DONE 4: Create a new controller method to return the post lists ordered by one of the new methods
+    @GetMapping("/blog-ordered")
+    public String listOrdered(Model model) {
+        List<BlogPost> blogPosts = repository.findAllByOrderByPublishDateDesc();
+        model.addAttribute("blogPosts", blogPosts);
+        return "blog/index";
         //TODO 5: (optional) use an optional parameter in the request (orderBy) to select wich order will be used.
+    }
 
     @PostMapping("/blog/save-new-post")
     public ResponseEntity<Object> saveBlogPost(BlogPost blogPost) {
