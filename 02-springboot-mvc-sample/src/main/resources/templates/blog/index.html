@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Blog Post index</title>
+</head>
+<body>
+
+<h1>Welcome to the Blog!</h1>
+
+<p>These are the latest blog posts</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Published</th>
+      <th>Author</th>
+      <th>title</th>
+    </tr>
+  </thead>
+  <tbody>
+  {{#blogPosts}}
+  <tr>
+    <td>{{publishDate}}</td>
+    <td>{{author}}</td>
+    <td>{{title}}</td>
+  </tr>
+  {{/blogPosts}}
+  </tbody>
+</table>
+
+</body>
+</html>
