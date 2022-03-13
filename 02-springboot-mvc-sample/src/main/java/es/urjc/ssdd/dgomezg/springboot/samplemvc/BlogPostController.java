@@ -5,6 +5,7 @@ import es.urjc.ssdd.dgomezg.springboot.samplemvc.persistence.BlogPostRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -35,11 +36,20 @@ public class BlogPostController {
 
     //DONE 4: Create a new controller method to return the post lists ordered by one of the new methods
     @GetMapping("/blog-ordered")
-    public String listOrdered(Model model) {
-        List<BlogPost> blogPosts = repository.findAllByOrderByPublishDateDesc();
+    public String listOrdered(Model model, Sort sort) {
+        //DONE 5: (optional) use an optional parameter in the request (orderBy) to select wich order will be used.
+        List<BlogPost> blogPosts;
+        if (sort != null) {
+            //Sort is filled from request parameter like sort=author,desc
+            LOGGER.trace("Sorting post list by "+ sort);
+            blogPosts = repository.findAll(sort);
+        } else {
+            LOGGER.trace("Sorting post list by default : publish Date in descedning order");
+            blogPosts = repository.findAllByOrderByPublishDateDesc();
+        }
+
         model.addAttribute("blogPosts", blogPosts);
         return "blog/index";
-        //TODO 5: (optional) use an optional parameter in the request (orderBy) to select wich order will be used.
     }
 
     @PostMapping("/blog/save-new-post")
