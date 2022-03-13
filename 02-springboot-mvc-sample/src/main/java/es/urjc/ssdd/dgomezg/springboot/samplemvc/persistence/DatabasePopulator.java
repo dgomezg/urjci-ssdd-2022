@@ -1,12 +1,14 @@
 package es.urjc.ssdd.dgomezg.springboot.samplemvc.persistence;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
 import java.util.Arrays;
 
 @Component
+@Profile("local")
 public class DatabasePopulator {
 
     @Autowired
