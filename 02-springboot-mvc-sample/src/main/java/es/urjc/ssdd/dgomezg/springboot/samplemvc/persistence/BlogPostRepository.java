@@ -10,4 +10,12 @@ public interface BlogPostRepository extends JpaRepository<BlogPost, Long> {
 
     List<BlogPost> findByTitle(String title);
 
+    //TODO 1 : Add convenient methods to get the post list ordered by :
+    //       -  user,
+
+    //TODO 2: - User and title
+
+    //TODO 3: - Descending publishDate
+
+
 }

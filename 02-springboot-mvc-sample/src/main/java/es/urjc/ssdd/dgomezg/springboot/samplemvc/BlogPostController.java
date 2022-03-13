@@ -31,6 +31,9 @@ public class BlogPostController {
         return "blog/index";
     }
 
+    //TODO 4: Create a new controller method to return the post lists ordered by one of the new methods
+        //TODO 5: (optional) use an optional parameter in the request (orderBy) to select wich order will be used.
+
     @PostMapping("/blog/save-new-post")
     public ResponseEntity<Object> saveBlogPost(BlogPost blogPost) {
         LOGGER.trace("Received Blog post from {} with title {}", blogPost.getAuthor(), blogPost.getTitle());
