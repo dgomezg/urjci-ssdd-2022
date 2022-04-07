@@ -5,9 +5,8 @@ import es.urjc.ssdd.dgomezg.springboot.samplemvc.persistence.BlogPostRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -31,18 +30,40 @@ public class BlogPostController {
         return "blog/index";
     }
 
+    @GetMapping("/blog/author/{authorId}/date/{date}") //2022-03-17
+    public String listByAuthor(Model model, @PathVariable String authorId, @PathVariable("topic") String tags){
+        List<BlogPost> byAuthor = repository.findByAuthorAndTag(authorId, tags);
+        model.addAttribute("blogPosts", byAuthor);
+        return "blog/index";
+    }
+
+    @GetMapping("/blog-page")
+    public String pagePosts(Model model, Pageable page) {
+        Page<BlogPost> blogPostPage = repository.findAll(page);
+        model.addAttribute("blogPosts", blogPostPage);
+        LOGGER.trace("Returning Blog Post page : " + blogPostPage);
+        return "blog/index";
+    }
+
+
     @PostMapping("/blog/save-new-post")
-    public ResponseEntity<Object> saveBlogPost(BlogPost blogPost) {
+
+    public String saveBlogPost(Model model, BlogPost blogPost) {
+
+
         LOGGER.trace("Received Blog post from {} with title {}", blogPost.getAuthor(), blogPost.getTitle());
         blogPost.setPublishDate(LocalDateTime.now());
 
         repository.save(blogPost);
         LOGGER.info("New Blog post {} from {} saved with id {}", blogPost.getTitle(), blogPost.getAuthor(), blogPost.getId());
 
-        //return "redirect:/blog";
-        return ResponseEntity.status(HttpStatus.FOUND)
+        model.addAttribute("blogPost", blogPost);
+        //return "blog/view-blog-post";
+
+        return "redirect:/blog/post/"+ blogPost.getId();
+        /*return ResponseEntity.status(HttpStatus.FOUND)
                 .header(HttpHeaders.LOCATION, "/blog/post/" + blogPost.getId())
-                .build();
+                .build();*/
     }
 
     @GetMapping("/blog/post/{blogPostId}")
