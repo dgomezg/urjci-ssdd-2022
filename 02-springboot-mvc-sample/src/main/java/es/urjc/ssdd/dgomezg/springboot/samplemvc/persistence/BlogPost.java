@@ -5,6 +5,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 @Entity
 public class BlogPost {
@@ -15,6 +16,7 @@ public class BlogPost {
     private String author;
     private String title;
     private String content;
+    private String tag;
     private LocalDateTime publishDate;
 
     public BlogPost() {
@@ -31,4 +33,62 @@ public class BlogPost {
         this.publishDate = publishDate;
     }
 
+    public String getTag() {
+        return tag;
+    }
+
+    public void setTag(String tag) {
+        this.tag = tag;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public String getAuthor() {
+        return author;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public LocalDateTime getPublishDate() {
+        return publishDate;
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
+    }
+
+    public void setPublishDate(LocalDateTime publishDate) {
+        this.publishDate = publishDate;
+    }
+
+    public String getFormattedPublishedDate() {
+        return publishDate.format(DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm"));
+    }
+
+    @Override
+    public String toString() {
+        return "BlogPost{" +
+                "id=" + id +
+                ", author='" + author + '\'' +
+                ", title='" + title + '\'' +
+                ", content='" + content + '\'' +
+                ", publishDate=" + publishDate +
+                '}';
+    }
 }

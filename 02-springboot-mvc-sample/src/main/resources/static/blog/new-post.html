@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Form to create a new blog post</title>
+</head>
+<body>
+
+<h1>Add a new blog post</h1>
+
+<form method="post" action="/blog/save-new-post">
+  <label for="author">Author's Name:</label>
+  <input type="text" id="author" name="author"><br/>
+
+  <label for="title">Blog post title</label>
+    <input type="text" id="title" name="title"><br/>
+
+  <label for="content">Blog Post content</label>
+    <textarea cols="40" rows="10" id="content" name="content"></textarea>
+    <br/>
+    <input type="submit" value="save"/>
+</form>
+</body>
+</html>
